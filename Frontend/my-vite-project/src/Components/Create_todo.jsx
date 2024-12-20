@@ -25,7 +25,7 @@ const Create_todo = () => {
     if (title && description) {
       const newTodo = { title, description };
       try {
-        await axios.post('https://todo-e6hd.onrender.com', newTodo);
+        await axios.post('https://todo-e6hd.onrender.com/todos', newTodo);
         setTitle('');
         setDescription('');
         get_todos();
