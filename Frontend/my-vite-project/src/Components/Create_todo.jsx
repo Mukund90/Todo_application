@@ -10,7 +10,7 @@ const Create_todo = () => {
 
   const get_todos = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/');
+      const response = await axios.get('https://todo-e6hd.onrender.com');
       setTodos(response.data.todos.map(todo => ({ ...todo, done: todo.done || false })));
     } catch (error) {
       console.error('Error:', error);
@@ -25,7 +25,7 @@ const Create_todo = () => {
     if (title && description) {
       const newTodo = { title, description };
       try {
-        await axios.post('http://localhost:3000/todos', newTodo);
+        await axios.post('https://todo-e6hd.onrender.com', newTodo);
         setTitle('');
         setDescription('');
         get_todos();
@@ -41,7 +41,7 @@ const Create_todo = () => {
     if (title && description && editTodo) {
       const updatedTodo = { title, description };
       try {
-        await axios.put(`http://localhost:3000/update/${editTodo._id}`, updatedTodo);
+        await axios.put(`https://todo-e6hd.onrender.com/update/${editTodo._id}`, updatedTodo);
         setTitle('');
         setDescription('');
         setEditTodo(null);
@@ -56,7 +56,7 @@ const Create_todo = () => {
 
   const delete_todos = (id) => {
     try {
-      axios.delete(`http://localhost:3000/delete/${id}`)
+      axios.delete(`https://todo-e6hd.onrender.com/delete/${id}`)
         .then(() => {
           setTodos(prevTodos => prevTodos.filter(todo => todo._id !== id));
         });
